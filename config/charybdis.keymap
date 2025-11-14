@@ -171,6 +171,7 @@
         };
 
         // Custom behavior for Layer 3 key: tap=toggle L3, hold=momentary L2
+        // This allows right thumb to access Layer 2 arrows easily
         lt3_mo2: layer_tap_3_momentary_2 {
             compatible = "zmk,behavior-hold-tap";
             label = "LT3_MO2";
@@ -200,7 +201,6 @@
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
             quick-tap-ms = <150>;
-            // usage: &lt2_ctrl LCTRL 2
             bindings = <&kp>, <&tog>;
         };
 
@@ -212,7 +212,6 @@
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
             quick-tap-ms = <150>;
-            // usage: &enter_shift ENTER LSHFT (or similar)
             bindings = <&kp>, <&kp>;
         };
 
@@ -238,7 +237,7 @@
 &kp TAB     &kp Q   &kp W   &kp E      &kp R      &kp T          &kp Y      &kp U       &kp I      &kp O    &kp P     &kp BSLH
 &kp BSPC    &kp A   &kp S   &kp D      &kp F      &kp G          &td_h_back &td_j_lclick &kp K     &kp L    &kp SEMI  &kp APOS
 &td_caps    &kp Z   &kp X   &kp C      &kp V      &kp B          &kp N      &kp M       &kp COMMA  &kp DOT  &slash_alt SLASH LALT  &kp LGUI
-                            &kp LSHFT  &kp SPACE  &kp LEFT       &enter_shift ENTER LSHFT  &kp RIGHT
+                            &kp LSHFT  &kp SPACE  &kp LEFT       &enter_shift LSHFT ENTER  &kp RIGHT
                                        &lt2_ctrl LCTRL 2  &lt1_custom 1 1       &lt3_mo2 2 3
             >;
 
@@ -252,7 +251,7 @@
 &kp GRAVE        &kp EXCL   &kp AT     &kp HASH   &kp DLLR   &kp PRCNT    &kp CARET  &kp AMPS       &kp STAR        &kp LPAR       &kp RPAR   &kp PG_UP
 &tilde_degree    &kp N1     &kp N2     &kp N3     &kp N4     &kp N5       &kp PLUS   &kp UNDER      &kp MINUS       &td_em_dash    &kp EQUAL  &kp PG_DN
 &kp PIPE         &kp N6     &kp N7     &kp N8     &kp N9     &kp N0       &kp BSLH   &kp LBKT       &kp RBKT        &td_en_dash    &kp LEFT   &kp RIGHT
-                                       &kp LSHFT  &kp SPACE  &kp LEFT     &enter_shift ENTER LSHFT  &kp BSPC
+                                       &kp LSHFT  &kp SPACE  &kp LEFT     &enter_shift LSHFT ENTER  &kp BSPC
                                                   &lt2_ctrl LCTRL 2  &tog 0       &lt3_mo2 2 3
             >;
         };
@@ -260,7 +259,7 @@
         // LAYER 2 - MEDIA / NAVIGATION / BLUETOOTH
         layer_2 {
             bindings = <
-&none      &none      &none        &none            &none            &none        &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_CLR  &bootloader
+&bootloader      &none      &none        &none            &none            &none        &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_CLR  &bootloader
 &none      &none      &kp LC(C)    &kp C_MUTE       &kp LC(V)        &kp K_BACK   &none         &kp PG_UP     &kp UP        &kp PG_DN     &none       &none
 &none      &kp C_PREV &kp LEFT     &kp C_VOL_UP     &kp RIGHT        &kp C_NEXT   &kp PSCRN     &kp LEFT      &kp DOWN      &kp RIGHT     &none       &none
 &none      &cc_toggle &kp C_BRI_DN &kp C_VOL_DN     &kp C_BRI_UP     &none        &none         &kp HOME      &none         &kp END       &none       &none
@@ -274,7 +273,7 @@
             bindings = <
 &none  &none  &none        &none        &none        &none        &none      &none           &none      &none  &none  &none
 &none  &none  &kp LC(C)    &kp C_MUTE   &kp LC(V)    &kp K_BACK   &none      &none           &none      &none  &none  &none
-&none  &none  &none        &none        &none        &none        &kp PG_UP  &lt4_custom 4 4  &mkp MCLK  &none  &none  &none
+&none  &none  &none        &none        &none        &none        &kp PG_UP  &lt4_custom 4 4 &mkp MCLK  &none  &none  &none
 &none  &none  &none        &none        &none        &none        &kp PG_DN  &mkp LCLK       &mkp RCLK  &none  &none  &none
                          &lt4_custom 4 4  &mkp LCLK  &mkp RCLK    &mkp RCLK  &mkp LCLK
                                     &trans     &trans       &tog 0
@@ -288,7 +287,7 @@
             bindings = <
 &none  &none  &none        &none        &none           &none      &none      &none           &none      &none            &none  &none
 &none  &none  &kp LC(C)    &kp C_MUTE   &kp LC(V)       &kp K_BACK &none      &kp PG_UP       &kp PG_DN  &none            &none  &none
-&none  &none  &none        &none        &lt5_custom 5 5  &none      &none      &lt3_custom 3 3  &mkp MCLK  &none            &none  &none
+&none  &none  &none        &none        &lt5_custom 5 5 &none      &none      &lt3_custom 3 3 &mkp MCLK  &none            &none  &none
 &none  &none  &none        &none        &none           &none      &none      &mkp LCLK       &mkp RCLK  &lt5_custom 5 5  &none  &none
                          &lt3_custom 3 3  &mkp LCLK  &mkp RCLK    &mkp RCLK  &mkp LCLK
                                     &trans     &trans       &tog 0
@@ -302,7 +301,7 @@
             bindings = <
 &none  &none  &none        &none        &none           &none      &none      &none           &none      &none            &none  &none
 &none  &none  &kp LC(C)    &kp C_MUTE   &kp LC(V)       &kp K_BACK &none      &kp PG_UP       &kp PG_DN  &none            &none  &none
-&none  &none  &none        &none        &lt4_custom 4 4  &none      &none      &lt3_custom 3 3  &mkp MCLK  &none            &none  &none
+&none  &none  &none        &none        &lt4_custom 4 4 &none      &none      &lt3_custom 3 3 &mkp MCLK  &none            &none  &none
 &none  &none  &none        &none        &none           &none      &none      &mkp LCLK       &mkp RCLK  &lt4_custom 4 4  &none  &none
                          &lt3_custom 3 3  &mkp LCLK  &mkp RCLK    &mkp RCLK  &mkp LCLK
                                     &trans     &trans       &tog 0
