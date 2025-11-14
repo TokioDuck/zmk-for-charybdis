@@ -14,15 +14,16 @@
         compatible = "zmk,combos";
 
         // Shift + Delete = Toggle Layer 6 (Media Remote)
+        // Note: Position numbers depend on your exact board configuration
+        // This assumes standard Charybdis positions - adjust if needed
         layer6_toggle {
             bindings = <&tog 6>;
-            key-positions = <24 47>;  // Left Shift (24) + Delete (47)
+            key-positions = <24 47>;  // Adjust based on your actual positions
             layers = <0>;
         };
     };
 
     macros {
-        // Em Dash — (ALT+0151 on Windows)
         em_dash_win: em_dash_windows {
             compatible = "zmk,behavior-macro";
             label = "EM_DASH_WIN";
@@ -32,7 +33,6 @@
                        <&macro_release &kp LALT>;
         };
 
-        // Em Dash — (Option+Shift+Minus on Mac)
         em_dash_mac: em_dash_mac {
             compatible = "zmk,behavior-macro";
             label = "EM_DASH_MAC";
@@ -42,7 +42,6 @@
                        <&macro_release &kp LALT &kp LSHFT>;
         };
 
-        // En Dash – (ALT+0150 on Windows)
         en_dash_win: en_dash_windows {
             compatible = "zmk,behavior-macro";
             label = "EN_DASH_WIN";
@@ -52,7 +51,6 @@
                        <&macro_release &kp LALT>;
         };
 
-        // En Dash – (Option+Minus on Mac)
         en_dash_mac: en_dash_mac {
             compatible = "zmk,behavior-macro";
             label = "EN_DASH_MAC";
@@ -62,7 +60,6 @@
                        <&macro_release &kp LALT>;
         };
 
-        // Degree Symbol ° (using Unicode input for Windows: ALT+0176)
         degree: degree_symbol {
             compatible = "zmk,behavior-macro";
             label = "DEGREE";
@@ -72,7 +69,6 @@
                        <&macro_release &kp LALT>;
         };
 
-        // Captions Toggle (YouTube standard: C key)
         cc_toggle: captions_toggle {
             compatible = "zmk,behavior-macro";
             label = "CC_TOGGLE";
@@ -82,7 +78,6 @@
     };
 
     behaviors {
-        // Tap-dance for Em Dash: tap=Windows, triple-tap=Mac
         td_em_dash: tap_dance_em_dash {
             compatible = "zmk,behavior-tap-dance";
             label = "TD_EM_DASH";
@@ -91,7 +86,6 @@
             bindings = <&em_dash_win>, <&em_dash_win>, <&em_dash_mac>;
         };
 
-        // Tap-dance for En Dash: tap=Windows, triple-tap=Mac
         td_en_dash: tap_dance_en_dash {
             compatible = "zmk,behavior-tap-dance";
             label = "TD_EN_DASH";
@@ -100,7 +94,6 @@
             bindings = <&en_dash_win>, <&en_dash_win>, <&en_dash_mac>;
         };
 
-        // Mod-morph for tilde/degree: tap=tilde, shift=degree symbol
         tilde_degree: tilde_degree_morph {
             compatible = "zmk,behavior-mod-morph";
             label = "TILDE_DEGREE";
@@ -109,7 +102,6 @@
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
-        // Caps Lock tap-dance: 1 tap=cancel caps word, 2 taps=caps word, 3 taps=caps lock
         td_caps: tap_dance_caps {
             compatible = "zmk,behavior-tap-dance";
             label = "TD_CAPS";
@@ -118,7 +110,6 @@
             bindings = <&caps_word>, <&caps_word>, <&kp CAPS>;
         };
 
-        // H key tap-dance (Layer 0 only): 3 taps = Browser Back
         td_h_back: tap_dance_h_browser_back {
             compatible = "zmk,behavior-tap-dance";
             label = "TD_H_BACK";
@@ -127,7 +118,6 @@
             bindings = <&kp H>, <&kp H>, <&kp K_BACK>;
         };
 
-        // J key tap-dance (Layer 0 only): 3 taps = Left Click
         td_j_lclick: tap_dance_j_left_click {
             compatible = "zmk,behavior-tap-dance";
             label = "TD_J_LCLK";
@@ -136,7 +126,6 @@
             bindings = <&kp J>, <&kp J>, <&mkp LCLK>;
         };
 
-        // Slash/Alt: tap=slash, hold=alt
         slash_alt: slash_alt_hold {
             compatible = "zmk,behavior-hold-tap";
             label = "SLASH_ALT";
@@ -144,11 +133,9 @@
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
             quick-tap-ms = <150>;
-            // usage: &slash_alt SLASH LALT
             bindings = <&kp>, <&kp>;
         };
 
-        // Layer 3 access: tap=toggle, hold=momentary
         lt3_custom: layer_tap_3_custom {
             compatible = "zmk,behavior-hold-tap";
             label = "LT3_CUSTOM";
@@ -159,7 +146,6 @@
             bindings = <&mo>, <&tog>;
         };
 
-        // Layer 5 access: tap=toggle, hold=momentary
         lt5_custom: layer_tap_5_custom {
             compatible = "zmk,behavior-hold-tap";
             label = "LT5_CUSTOM";
@@ -170,8 +156,6 @@
             bindings = <&mo>, <&tog>;
         };
 
-        // Custom behavior for Layer 3 key: tap=toggle L3, hold=momentary L2
-        // This allows right thumb to access Layer 2 arrows easily
         lt3_mo2: layer_tap_3_momentary_2 {
             compatible = "zmk,behavior-hold-tap";
             label = "LT3_MO2";
@@ -182,7 +166,6 @@
             bindings = <&mo>, <&tog>;
         };
 
-        // Custom behavior for Layer 1: tap=toggle, hold=momentary
         lt1_custom: layer_tap_1_custom {
             compatible = "zmk,behavior-hold-tap";
             label = "LT1_CUSTOM";
@@ -193,7 +176,6 @@
             bindings = <&mo>, <&tog>;
         };
 
-        // Custom behavior for Layer 2: tap=toggle, hold=Ctrl
         lt2_ctrl: layer_tap_2_ctrl {
             compatible = "zmk,behavior-hold-tap";
             label = "LT2_CTRL";
@@ -204,7 +186,6 @@
             bindings = <&kp>, <&tog>;
         };
 
-        // Custom behavior for Enter/Shift on right thumb
         enter_shift: enter_shift {
             compatible = "zmk,behavior-hold-tap";
             label = "ENTER_SHIFT";
@@ -215,7 +196,6 @@
             bindings = <&kp>, <&kp>;
         };
 
-        // Custom behavior for Layer 4: tap=toggle, hold=momentary
         lt4_custom: layer_tap_4_custom {
             compatible = "zmk,behavior-hold-tap";
             label = "LT4_CUSTOM";
@@ -230,13 +210,12 @@
     keymap {
         compatible = "zmk,keymap";
 
-        // LAYER 0 - BASE (QWERTY)
         Base {
             bindings = <
-&kp ESC     &kp N1  &kp N2  &kp N3     &kp N4     &kp N5         &kp N6     &kp N7      &kp N8     &kp N9   &kp N0    &kp DEL
-&kp TAB     &kp Q   &kp W   &kp E      &kp R      &kp T          &kp Y      &kp U       &kp I      &kp O    &kp P     &kp BSLH
-&kp BSPC    &kp A   &kp S   &kp D      &kp F      &kp G          &td_h_back &td_j_lclick &kp K     &kp L    &kp SEMI  &kp APOS
-&td_caps    &kp Z   &kp X   &kp C      &kp V      &kp B          &kp N      &kp M       &kp COMMA  &kp DOT  &slash_alt SLASH LALT  &kp LGUI
+&kp ESC     &kp N1  &kp N2  &kp N3     &kp N4     &kp N5         &kp N6     &kp N7       &kp N8     &kp N9   &kp N0               &kp DEL
+&kp TAB     &kp Q   &kp W   &kp E      &kp R      &kp T          &kp Y      &kp U        &kp I      &kp O    &kp P                &kp BSLH
+&kp BSPC    &kp A   &kp S   &kp D      &kp F      &kp G          &td_h_back &td_j_lclick &kp K      &kp L    &kp SEMI             &kp APOS
+&td_caps    &kp Z   &kp X   &kp C      &kp V      &kp B          &kp N      &kp M        &kp COMMA  &kp DOT  &slash_alt LALT FSLH &kp LGUI
                             &kp LSHFT  &kp SPACE  &kp LEFT       &enter_shift LSHFT ENTER  &kp RIGHT
                                        &lt2_ctrl LCTRL 2  &lt1_custom 1 1       &lt3_mo2 2 3
             >;
@@ -244,23 +223,21 @@
             trackball-bindings = <&tmv_coarse>;
         };
 
-        // LAYER 1 - NUMBERS / SYMBOLS / FUNCTION KEYS
         layer_1 {
             bindings = <
-&kp F12          &kp F1     &kp F2     &kp F3     &kp F4     &kp F5       &kp F6     &kp F7         &kp F8          &kp F9         &kp F10    &kp F11
-&kp GRAVE        &kp EXCL   &kp AT     &kp HASH   &kp DLLR   &kp PRCNT    &kp CARET  &kp AMPS       &kp STAR        &kp LPAR       &kp RPAR   &kp PG_UP
-&tilde_degree    &kp N1     &kp N2     &kp N3     &kp N4     &kp N5       &kp PLUS   &kp UNDER      &kp MINUS       &td_em_dash    &kp EQUAL  &kp PG_DN
-&kp PIPE         &kp N6     &kp N7     &kp N8     &kp N9     &kp N0       &kp BSLH   &kp LBKT       &kp RBKT        &td_en_dash    &kp LEFT   &kp RIGHT
+&kp F12          &kp F1     &kp F2     &kp F3     &kp F4     &kp F5       &kp F6     &kp F7                    &kp F8          &kp F9         &kp F10    &kp F11
+&kp GRAVE        &kp EXCL   &kp AT     &kp HASH   &kp DLLR   &kp PRCNT    &kp CARET  &kp AMPS                  &kp STAR        &kp LPAR       &kp RPAR   &kp PG_UP
+&tilde_degree    &kp N1     &kp N2     &kp N3     &kp N4     &kp N5       &kp PLUS   &kp UNDER                 &kp MINUS       &td_em_dash    &kp EQUAL  &kp PG_DN
+&kp PIPE         &kp N6     &kp N7     &kp N8     &kp N9     &kp N0       &kp BSLH   &kp LBKT                  &kp RBKT        &td_en_dash    &kp LEFT   &kp RIGHT
                                        &kp LSHFT  &kp SPACE  &kp LEFT     &enter_shift LSHFT ENTER  &kp BSPC
                                                   &lt2_ctrl LCTRL 2  &tog 0       &lt3_mo2 2 3
             >;
         };
 
-        // LAYER 2 - MEDIA / NAVIGATION / BLUETOOTH
         layer_2 {
             bindings = <
 &bootloader      &none      &none        &none            &none            &none        &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_CLR  &bootloader
-&none      &none      &kp LC(C)    &kp C_MUTE       &kp LC(V)        &kp K_BACK   &none         &kp PG_UP     &kp UP        &kp PG_DN     &none       &none
+&none      &none      &kp LC(C)    &none            &kp LC(V)        &kp K_BACK   &none         &kp PG_UP     &kp UP        &kp PG_DN     &none       &none
 &none      &kp C_PREV &kp LEFT     &kp C_VOL_UP     &kp RIGHT        &kp C_NEXT   &kp PSCRN     &kp LEFT      &kp DOWN      &kp RIGHT     &none       &none
 &none      &cc_toggle &kp C_BRI_DN &kp C_VOL_DN     &kp C_BRI_UP     &none        &none         &kp HOME      &none         &kp END       &none       &none
                                    &kp LEFT         &kp SPACE        &kp RIGHT    &none         &none
@@ -268,13 +245,12 @@
             >;
         };
 
-        // LAYER 3 - SCROLL MOUSE
         layer_3 {
             bindings = <
-&none  &none  &none        &none        &none        &none        &none      &none           &none      &none  &none  &none
-&none  &none  &kp LC(C)    &none   &kp LC(V)    &kp K_BACK   &none      &none           &none      &none  &none  &none
-&none  &none  &none        &none        &none        &none        &kp PG_UP  &lt4_custom 4 4 &mkp MCLK  &none  &none  &none
-&none  &none  &none        &none        &none        &none        &kp PG_DN  &mkp LCLK       &mkp RCLK  &none  &none  &none
+&none  &none  &none        &none        &none        &none        &none      &none            &none      &none  &none  &none
+&none  &none  &kp LC(C)    &none        &kp LC(V)    &kp K_BACK   &none      &none            &none      &none  &none  &none
+&none  &none  &none        &none        &none        &none        &kp PG_UP  &lt4_custom 4 4  &mkp MCLK  &none  &none  &none
+&none  &none  &none        &none        &none        &none        &kp PG_DN  &mkp LCLK        &mkp RCLK  &none  &none  &none
                          &lt4_custom 4 4  &mkp LCLK  &mkp RCLK    &mkp RCLK  &mkp LCLK
                                     &trans     &trans       &tog 0
             >;
@@ -282,13 +258,12 @@
             trackball-bindings = <&tsl>;
         };
 
-        // LAYER 4 - COARSE/REGULAR MOUSE
         layer_4 {
             bindings = <
-&none  &none  &none        &none        &none           &none      &none      &none           &none      &none            &none  &none
-&none  &none  &kp LC(C)    &none   &kp LC(V)       &kp K_BACK &none      &kp PG_UP       &kp PG_DN  &none            &none  &none
-&none  &none  &none        &none        &lt5_custom 5 5 &none      &none      &lt3_custom 3 3 &mkp MCLK  &none            &none  &none
-&none  &none  &none        &none        &none           &none      &none      &mkp LCLK       &mkp RCLK  &lt5_custom 5 5  &none  &none
+&none  &none  &none        &none        &none            &none      &none      &none            &none      &none            &none  &none
+&none  &none  &kp LC(C)    &none        &kp LC(V)        &kp K_BACK &none      &kp PG_UP        &kp PG_DN  &none            &none  &none
+&none  &none  &none        &none        &lt5_custom 5 5  &none      &none      &lt3_custom 3 3  &mkp MCLK  &none            &none  &none
+&none  &none  &none        &none        &none            &none      &none      &mkp LCLK        &mkp RCLK  &lt5_custom 5 5  &none  &none
                          &lt3_custom 3 3  &mkp LCLK  &mkp RCLK    &mkp RCLK  &mkp LCLK
                                     &trans     &trans       &tog 0
             >;
@@ -296,13 +271,12 @@
             trackball-bindings = <&tmv_coarse>;
         };
 
-        // LAYER 5 - PRECISION MOUSE
         layer_5 {
             bindings = <
-&none  &none  &none        &none        &none           &none      &none      &none           &none      &none            &none  &none
-&none  &none  &kp LC(C)    &none   &kp LC(V)       &kp K_BACK &none      &kp PG_UP       &kp PG_DN  &none            &none  &none
-&none  &none  &none        &none        &lt4_custom 4 4 &none      &none      &lt3_custom 3 3 &mkp MCLK  &none            &none  &none
-&none  &none  &none        &none        &none           &none      &none      &mkp LCLK       &mkp RCLK  &lt4_custom 4 4  &none  &none
+&none  &none  &none        &none        &none            &none      &none      &none            &none      &none            &none  &none
+&none  &none  &kp LC(C)    &none        &kp LC(V)        &kp K_BACK &none      &kp PG_UP        &kp PG_DN  &none            &none  &none
+&none  &none  &none        &none        &lt4_custom 4 4  &none      &none      &lt3_custom 3 3  &mkp MCLK  &none            &none  &none
+&none  &none  &none        &none        &none            &none      &none      &mkp LCLK        &mkp RCLK  &lt4_custom 4 4  &none  &none
                          &lt3_custom 3 3  &mkp LCLK  &mkp RCLK    &mkp RCLK  &mkp LCLK
                                     &trans     &trans       &tog 0
             >;
@@ -310,7 +284,6 @@
             trackball-bindings = <&tmv_fine>;
         };
 
-        // LAYER 6 - MEDIA REMOTE (RIGHT-HAND ONLY)
         layer_6 {
             bindings = <
 &none  &none  &none        &none        &none        &none        &none      &none        &none         &none         &none      &none
