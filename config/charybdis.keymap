@@ -25,6 +25,7 @@
         // Em Dash — (ALT+0151 on Windows)
         em_dash_win: em_dash_windows {
             compatible = "zmk,behavior-macro";
+            label = "EM_DASH_WIN";
             #binding-cells = <0>;
             bindings = <&macro_press &kp LALT>,
                        <&macro_tap &kp KP_N0 &kp KP_N1 &kp KP_N5 &kp KP_N1>,
@@ -34,6 +35,7 @@
         // Em Dash — (Option+Shift+Minus on Mac)
         em_dash_mac: em_dash_mac {
             compatible = "zmk,behavior-macro";
+            label = "EM_DASH_MAC";
             #binding-cells = <0>;
             bindings = <&macro_press &kp LALT &kp LSHFT>,
                        <&macro_tap &kp MINUS>,
@@ -43,6 +45,7 @@
         // En Dash – (ALT+0150 on Windows)
         en_dash_win: en_dash_windows {
             compatible = "zmk,behavior-macro";
+            label = "EN_DASH_WIN";
             #binding-cells = <0>;
             bindings = <&macro_press &kp LALT>,
                        <&macro_tap &kp KP_N0 &kp KP_N1 &kp KP_N5 &kp KP_N0>,
@@ -52,6 +55,7 @@
         // En Dash – (Option+Minus on Mac)
         en_dash_mac: en_dash_mac {
             compatible = "zmk,behavior-macro";
+            label = "EN_DASH_MAC";
             #binding-cells = <0>;
             bindings = <&macro_press &kp LALT>,
                        <&macro_tap &kp MINUS>,
@@ -61,6 +65,7 @@
         // Degree Symbol ° (using Unicode input for Windows: ALT+0176)
         degree: degree_symbol {
             compatible = "zmk,behavior-macro";
+            label = "DEGREE";
             #binding-cells = <0>;
             bindings = <&macro_press &kp LALT>,
                        <&macro_tap &kp KP_N0 &kp KP_N1 &kp KP_N7 &kp KP_N6>,
@@ -70,6 +75,7 @@
         // Captions Toggle (YouTube standard: C key)
         cc_toggle: captions_toggle {
             compatible = "zmk,behavior-macro";
+            label = "CC_TOGGLE";
             #binding-cells = <0>;
             bindings = <&macro_tap &kp C>;
         };
@@ -79,6 +85,7 @@
         // Tap-dance for Em Dash: tap=Windows, triple-tap=Mac
         td_em_dash: tap_dance_em_dash {
             compatible = "zmk,behavior-tap-dance";
+            label = "TD_EM_DASH";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&em_dash_win>, <&em_dash_win>, <&em_dash_mac>;
@@ -87,6 +94,7 @@
         // Tap-dance for En Dash: tap=Windows, triple-tap=Mac
         td_en_dash: tap_dance_en_dash {
             compatible = "zmk,behavior-tap-dance";
+            label = "TD_EN_DASH";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&en_dash_win>, <&en_dash_win>, <&en_dash_mac>;
@@ -95,6 +103,7 @@
         // Mod-morph for tilde/degree: tap=tilde, shift=degree symbol
         tilde_degree: tilde_degree_morph {
             compatible = "zmk,behavior-mod-morph";
+            label = "TILDE_DEGREE";
             #binding-cells = <0>;
             bindings = <&kp TILDE>, <&degree>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
@@ -103,6 +112,7 @@
         // Caps Lock tap-dance: 1 tap=cancel caps word, 2 taps=caps word, 3 taps=caps lock
         td_caps: tap_dance_caps {
             compatible = "zmk,behavior-tap-dance";
+            label = "TD_CAPS";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&caps_word>, <&caps_word>, <&kp CAPS>;
@@ -111,6 +121,7 @@
         // H key tap-dance (Layer 0 only): 3 taps = Browser Back
         td_h_back: tap_dance_h_browser_back {
             compatible = "zmk,behavior-tap-dance";
+            label = "TD_H_BACK";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp H>, <&kp H>, <&kp K_BACK>;
@@ -119,6 +130,7 @@
         // J key tap-dance (Layer 0 only): 3 taps = Left Click
         td_j_lclick: tap_dance_j_left_click {
             compatible = "zmk,behavior-tap-dance";
+            label = "TD_J_LCLICK";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp J>, <&kp J>, <&mkp LCLK>;
@@ -127,6 +139,7 @@
         // Slash/Alt: tap=slash, hold=alt
         slash_alt: slash_alt_hold {
             compatible = "zmk,behavior-hold-tap";
+            label = "SLASH_ALT";
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
@@ -137,6 +150,7 @@
         // Layer 1: tap=toggle L1, hold=momentary L1
         lt1_custom: layer_tap_1_custom {
             compatible = "zmk,behavior-hold-tap";
+            label = "LT1_CUSTOM";
             #binding-cells = <0>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
@@ -147,6 +161,7 @@
         // Layer 2: tap=toggle L2, hold=Ctrl
         lt2_ctrl: layer_tap_2_ctrl {
             compatible = "zmk,behavior-hold-tap";
+            label = "LT2_CTRL";
             #binding-cells = <0>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
@@ -157,6 +172,7 @@
         // Layer 3 from Base: tap=toggle L3, hold=momentary L2
         lt3_mo2: layer_tap_3_momentary_2 {
             compatible = "zmk,behavior-hold-tap";
+            label = "LT3_MO2";
             #binding-cells = <0>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
@@ -167,6 +183,7 @@
         // Layer 3 access (standard): tap=toggle L3, hold=momentary L3
         lt3_custom: layer_tap_3_custom {
             compatible = "zmk,behavior-hold-tap";
+            label = "LT3_CUSTOM";
             #binding-cells = <0>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
@@ -177,6 +194,7 @@
         // Layer 4 access: tap=toggle L4, hold=momentary L4
         lt4_custom: layer_tap_4_custom {
             compatible = "zmk,behavior-hold-tap";
+            label = "LT4_CUSTOM";
             #binding-cells = <0>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
@@ -187,6 +205,7 @@
         // Layer 5 access: tap=toggle L5, hold=momentary L5
         lt5_custom: layer_tap_5_custom {
             compatible = "zmk,behavior-hold-tap";
+            label = "LT5_CUSTOM";
             #binding-cells = <0>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
@@ -197,6 +216,7 @@
         // Enter/Shift on right thumb: tap=Enter, hold=Shift
         enter_shift: enter_shift {
             compatible = "zmk,behavior-hold-tap";
+            label = "ENTER_SHIFT";
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
