@@ -155,7 +155,7 @@
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
             quick-tap-ms = <150>;
-            bindings = <&mo 1>, <&tog 1>;  // hold=mo 1, tap=tog 1
+            bindings = <&mo 1 &tog 1>;  // hold=mo 1, tap=tog 1 (NO COMMA!)
         };
 
         // Layer 2: tap=toggle L2, hold=Ctrl
@@ -166,7 +166,7 @@
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
             quick-tap-ms = <150>;
-            bindings = <&kp LCTRL>, <&tog 2>;  // hold=Ctrl, tap=tog 2
+            bindings = <&kp LCTRL &tog 2>;  // hold=Ctrl, tap=tog 2 (NO COMMA!)
         };
 
         // Layer 3 from Base: tap=toggle L3, hold=momentary L2
@@ -177,7 +177,7 @@
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
             quick-tap-ms = <150>;
-            bindings = <&mo 2>, <&tog 3>;  // hold=mo 2, tap=tog 3
+            bindings = <&mo 2 &tog 3>;  // hold=mo 2, tap=tog 3 (NO COMMA!)
         };
 
         // Layer 3 access (standard): tap=toggle L3, hold=momentary L3
@@ -188,7 +188,7 @@
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
             quick-tap-ms = <150>;
-            bindings = <&mo 3>, <&tog 3>;  // hold=mo 3, tap=tog 3
+            bindings = <&mo 3 &tog 3>;  // hold=mo 3, tap=tog 3 (NO COMMA!)
         };
 
         // Layer 4 access: tap=toggle L4, hold=momentary L4
@@ -199,7 +199,7 @@
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
             quick-tap-ms = <150>;
-            bindings = <&mo 4>, <&tog 4>;  // hold=mo 4, tap=tog 4
+            bindings = <&mo 4 &tog 4>;  // hold=mo 4, tap=tog 4 (NO COMMA!)
         };
 
         // Layer 5 access: tap=toggle L5, hold=momentary L5
@@ -210,7 +210,7 @@
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
             quick-tap-ms = <150>;
-            bindings = <&mo 5>, <&tog 5>;  // hold=mo 5, tap=tog 5
+            bindings = <&mo 5 &tog 5>;  // hold=mo 5, tap=tog 5 (NO COMMA!)
         };
 
         // Enter/Shift on right thumb: tap=Enter, hold=Shift
