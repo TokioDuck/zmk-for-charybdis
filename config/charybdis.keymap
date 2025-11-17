@@ -151,66 +151,66 @@
         lt1_custom: layer_tap_1_custom {
             compatible = "zmk,behavior-hold-tap";
             label = "LT1_CUSTOM";
-            #binding-cells = <0>;
+            #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
             quick-tap-ms = <150>;
-            bindings = <&mo 1 &tog 1>;  // hold=mo 1, tap=tog 1 (NO COMMA!)
+            bindings = <&mo>, <&tog>;
         };
 
         // Layer 2: tap=toggle L2, hold=Ctrl
         lt2_ctrl: layer_tap_2_ctrl {
             compatible = "zmk,behavior-hold-tap";
             label = "LT2_CTRL";
-            #binding-cells = <0>;
+            #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
             quick-tap-ms = <150>;
-            bindings = <&kp LCTRL &tog 2>;  // hold=Ctrl, tap=tog 2 (NO COMMA!)
+            bindings = <&kp>, <&tog>;
         };
 
         // Layer 3 from Base: tap=toggle L3, hold=momentary L2
         lt3_mo2: layer_tap_3_momentary_2 {
             compatible = "zmk,behavior-hold-tap";
             label = "LT3_MO2";
-            #binding-cells = <0>;
+            #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
             quick-tap-ms = <150>;
-            bindings = <&mo 2 &tog 3>;  // hold=mo 2, tap=tog 3 (NO COMMA!)
+            bindings = <&mo>, <&tog>;
         };
 
         // Layer 3 access (standard): tap=toggle L3, hold=momentary L3
         lt3_custom: layer_tap_3_custom {
             compatible = "zmk,behavior-hold-tap";
             label = "LT3_CUSTOM";
-            #binding-cells = <0>;
+            #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
             quick-tap-ms = <150>;
-            bindings = <&mo 3 &tog 3>;  // hold=mo 3, tap=tog 3 (NO COMMA!)
+            bindings = <&mo>, <&tog>;
         };
 
         // Layer 4 access: tap=toggle L4, hold=momentary L4
         lt4_custom: layer_tap_4_custom {
             compatible = "zmk,behavior-hold-tap";
             label = "LT4_CUSTOM";
-            #binding-cells = <0>;
+            #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
             quick-tap-ms = <150>;
-            bindings = <&mo 4 &tog 4>;  // hold=mo 4, tap=tog 4 (NO COMMA!)
+            bindings = <&mo>, <&tog>;
         };
 
         // Layer 5 access: tap=toggle L5, hold=momentary L5
         lt5_custom: layer_tap_5_custom {
             compatible = "zmk,behavior-hold-tap";
             label = "LT5_CUSTOM";
-            #binding-cells = <0>;
+            #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
             quick-tap-ms = <150>;
-            bindings = <&mo 5 &tog 5>;  // hold=mo 5, tap=tog 5 (NO COMMA!)
+            bindings = <&mo>, <&tog>;
         };
 
         // Enter/Shift on right thumb: tap=Enter, hold=Shift
@@ -236,7 +236,7 @@
 &kp BSPC    &kp A   &kp S   &kp D      &kp F      &kp G          &td_h_back &td_j_lclick &kp K     &kp L    &kp SEMI  &kp APOS
 &td_caps    &kp Z   &kp X   &kp C      &kp V      &kp B          &kp N      &kp M       &kp COMMA  &kp DOT  &slash_alt LALT FSLH  &kp LGUI
                             &kp LSHFT  &kp SPACE  &kp LEFT       &enter_shift LSHFT ENTER  &kp RIGHT
-                                       &lt2_ctrl  &lt1_custom    &lt3_mo2
+                                       &lt2_ctrl LCTRL 2  &lt1_custom 1 1    &lt3_mo2 2 3
             >;
 
             trackball-bindings = <&tmv_coarse>;
@@ -250,7 +250,7 @@
 &tilde_degree    &kp N1     &kp N2     &kp N3     &kp N4     &kp N5       &kp PLUS   &kp UNDER      &kp MINUS       &td_em_dash    &kp EQUAL  &kp PG_DN
 &kp PIPE         &kp N6     &kp N7     &kp N8     &kp N9     &kp N0       &kp BSLH   &kp LBKT       &kp RBKT        &td_en_dash    &kp LEFT   &kp RIGHT
                                        &kp LSHFT  &kp SPACE  &kp LEFT     &enter_shift LSHFT ENTER  &kp BSPC
-                                                  &lt2_ctrl  &tog 0       &lt3_mo2
+                                                  &lt2_ctrl LCTRL 2  &tog 0       &lt3_mo2 2 3
             >;
         };
 
@@ -262,7 +262,7 @@
 &none      &kp C_PREV &kp LEFT     &kp C_VOL_UP     &kp RIGHT        &kp C_NEXT   &kp PSCRN     &kp LEFT      &kp DOWN      &kp RIGHT     &none       &none
 &none      &cc_toggle &kp C_BRI_DN &kp C_VOL_DN     &kp C_BRI_UP     &none        &none         &kp HOME      &none         &kp END       &none       &none
                                    &kp LEFT         &kp SPACE        &kp RIGHT    &none         &none
-                                                    &tog 0           &lt1_custom  &lt3_custom
+                                                    &tog 0           &lt1_custom 1 1  &lt3_custom 3 3
             >;
         };
 
@@ -271,9 +271,9 @@
             bindings = <
 &none  &none  &none        &none        &none        &none        &none      &none           &none      &none  &none  &none
 &none  &none  &kp LC(C)    &kp C_MUTE   &kp LC(V)    &kp K_BACK   &none      &none           &none      &none  &none  &none
-&none  &none  &none        &none        &lt4_custom  &none        &kp PG_UP  &lt4_custom     &mkp MCLK  &none  &none  &none
+&none  &none  &none        &none        &lt4_custom 4 4  &none        &kp PG_UP  &lt4_custom 4 4     &mkp MCLK  &none  &none  &none
 &none  &none  &none        &none        &none        &none        &kp PG_DN  &mkp LCLK       &mkp RCLK  &none  &none  &none
-                         &lt4_custom  &mkp LCLK  &mkp RCLK    &mkp RCLK  &mkp LCLK
+                         &lt4_custom 4 4  &mkp LCLK  &mkp RCLK    &mkp RCLK  &mkp LCLK
                                     &trans     &trans       &tog 0
             >;
 
@@ -285,9 +285,9 @@
             bindings = <
 &none  &none  &none        &none        &none           &none      &none      &none           &none      &none            &none  &none
 &none  &none  &kp LC(C)    &kp C_MUTE   &kp LC(V)       &kp K_BACK &none      &kp PG_UP       &kp PG_DN  &none            &none  &none
-&none  &none  &none        &none        &lt5_custom     &none      &none      &lt3_custom     &mkp MCLK  &none            &none  &none
-&none  &none  &none        &none        &none           &none      &none      &mkp LCLK       &mkp RCLK  &lt5_custom      &none  &none
-                         &lt3_custom  &mkp LCLK  &mkp RCLK    &mkp RCLK  &mkp LCLK
+&none  &none  &none        &none        &lt5_custom 5 5     &none      &none      &lt3_custom 3 3     &mkp MCLK  &none            &none  &none
+&none  &none  &none        &none        &none           &none      &none      &mkp LCLK       &mkp RCLK  &lt5_custom 5 5      &none  &none
+                         &lt3_custom 3 3  &mkp LCLK  &mkp RCLK    &mkp RCLK  &mkp LCLK
                                     &trans     &trans       &tog 0
             >;
 
@@ -299,9 +299,9 @@
             bindings = <
 &none  &none  &none        &none        &none           &none      &none      &none           &none      &none            &none  &none
 &none  &none  &kp LC(C)    &kp C_MUTE   &kp LC(V)       &kp K_BACK &none      &kp PG_UP       &kp PG_DN  &none            &none  &none
-&none  &none  &none        &none        &lt4_custom     &none      &none      &lt3_custom     &mkp MCLK  &none            &none  &none
-&none  &none  &none        &none        &none           &none      &none      &mkp LCLK       &mkp RCLK  &lt4_custom      &none  &none
-                         &lt3_custom  &mkp LCLK  &mkp RCLK    &mkp RCLK  &mkp LCLK
+&none  &none  &none        &none        &lt4_custom 4 4     &none      &none      &lt3_custom 3 3     &mkp MCLK  &none            &none  &none
+&none  &none  &none        &none        &none           &none      &none      &mkp LCLK       &mkp RCLK  &lt4_custom 4 4      &none  &none
+                         &lt3_custom 3 3  &mkp LCLK  &mkp RCLK    &mkp RCLK  &mkp LCLK
                                     &trans     &trans       &tog 0
             >;
 
