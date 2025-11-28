@@ -19,6 +19,57 @@
             key-positions = <24 47>;  // Left Shift (24) + Delete (47)
             layers = <0>;
         };
+
+        // Ctrl (thumb, pos 53) + Esc (pos 0) = force Base layer (L0), from any layer
+        force_base_l0 {
+            bindings = <&to 0>;
+            key-positions = <0 53>;
+            layers = <0 1 2 3 4 5 6>;
+        };
+
+        // Ctrl (53) + "1" (1) + "2" (2) = print current layer ("L0", "L1", etc.)
+
+        layer_status_L0_combo {
+            bindings = <&layer_status_l0>;
+            key-positions = <53 1 2>;
+            layers = <0>;
+        };
+
+        layer_status_L1_combo {
+            bindings = <&layer_status_l1>;
+            key-positions = <53 1 2>;
+            layers = <1>;
+        };
+
+        layer_status_L2_combo {
+            bindings = <&layer_status_l2>;
+            key-positions = <53 1 2>;
+            layers = <2>;
+        };
+
+        layer_status_L3_combo {
+            bindings = <&layer_status_l3>;
+            key-positions = <53 1 2>;
+            layers = <3>;
+        };
+
+        layer_status_L4_combo {
+            bindings = <&layer_status_l4>;
+            key-positions = <53 1 2>;
+            layers = <4>;
+        };
+
+        layer_status_L5_combo {
+            bindings = <&layer_status_l5>;
+            key-positions = <53 1 2>;
+            layers = <5>;
+        };
+
+        layer_status_L6_combo {
+            bindings = <&layer_status_l6>;
+            key-positions = <53 1 2>;
+            layers = <6>;
+        };
     };
 
     macros {
@@ -78,6 +129,56 @@
             label = "CC_TOGGLE";
             #binding-cells = <0>;
             bindings = <&macro_tap &kp C>;
+        };
+
+        // Layer status macros: type Ln
+        layer_status_l0: layer_status_l0 {
+            compatible = "zmk,behavior-macro";
+            label = "LAYER_STATUS_L0";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp L &kp N0>;
+        };
+
+        layer_status_l1: layer_status_l1 {
+            compatible = "zmk,behavior-macro";
+            label = "LAYER_STATUS_L1";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp L &kp N1>;
+        };
+
+        layer_status_l2: layer_status_l2 {
+            compatible = "zmk,behavior-macro";
+            label = "LAYER_STATUS_L2";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp L &kp N2>;
+        };
+
+        layer_status_l3: layer_status_l3 {
+            compatible = "zmk,behavior-macro";
+            label = "LAYER_STATUS_L3";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp L &kp N3>;
+        };
+
+        layer_status_l4: layer_status_l4 {
+            compatible = "zmk,behavior-macro";
+            label = "LAYER_STATUS_L4";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp L &kp N4>;
+        };
+
+        layer_status_l5: layer_status_l5 {
+            compatible = "zmk,behavior-macro";
+            label = "LAYER_STATUS_L5";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp L &kp N5>;
+        };
+
+        layer_status_l6: layer_status_l6 {
+            compatible = "zmk,behavior-macro";
+            label = "LAYER_STATUS_L6";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp L &kp N6>;
         };
     };
 
@@ -147,7 +248,7 @@
             bindings = <&kp>, <&kp>;
         };
 
-        // Layer 1: tap=toggle L1, hold=momentary L1
+        // Layer 1: tap = go to L1, hold = momentary L1
         lt1_custom: layer_tap_1_custom {
             compatible = "zmk,behavior-hold-tap";
             label = "LT1_CUSTOM";
@@ -155,10 +256,10 @@
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
             quick-tap-ms = <150>;
-            bindings = <&mo>, <&tog>;
+            bindings = <&mo>, <&to>;
         };
 
-        // Layer 2: tap=toggle L2, hold=Ctrl
+        // Layer 2: tap = go to L2, hold = Ctrl
         lt2_ctrl: layer_tap_2_ctrl {
             compatible = "zmk,behavior-hold-tap";
             label = "LT2_CTRL";
@@ -166,10 +267,10 @@
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
             quick-tap-ms = <150>;
-            bindings = <&kp>, <&tog>;
+            bindings = <&kp>, <&to>;
         };
 
-        // Layer 3 from Base: tap=toggle L3, hold=momentary L2
+        // Layer 3 from Base: tap = go to L3, hold = momentary L2
         lt3_mo2: layer_tap_3_momentary_2 {
             compatible = "zmk,behavior-hold-tap";
             label = "LT3_MO2";
@@ -177,10 +278,10 @@
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
             quick-tap-ms = <150>;
-            bindings = <&mo>, <&tog>;
+            bindings = <&mo>, <&to>;
         };
 
-        // Layer 3 access (standard): tap=toggle L3, hold=momentary L3
+        // Layer 3: tap = go to L3, hold = momentary L3
         lt3_custom: layer_tap_3_custom {
             compatible = "zmk,behavior-hold-tap";
             label = "LT3_CUSTOM";
@@ -188,10 +289,10 @@
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
             quick-tap-ms = <150>;
-            bindings = <&mo>, <&tog>;
+            bindings = <&mo>, <&to>;
         };
 
-        // Layer 4 access: tap=toggle L4, hold=momentary L4
+        // Layer 4: tap = go to L4, hold = momentary L4
         lt4_custom: layer_tap_4_custom {
             compatible = "zmk,behavior-hold-tap";
             label = "LT4_CUSTOM";
@@ -199,10 +300,10 @@
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
             quick-tap-ms = <150>;
-            bindings = <&mo>, <&tog>;
+            bindings = <&mo>, <&to>;
         };
 
-        // Layer 5 access: tap=toggle L5, hold=momentary L5
+        // Layer 5: tap = go to L5, hold = momentary L5
         lt5_custom: layer_tap_5_custom {
             compatible = "zmk,behavior-hold-tap";
             label = "LT5_CUSTOM";
@@ -210,7 +311,7 @@
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
             quick-tap-ms = <150>;
-            bindings = <&mo>, <&tog>;
+            bindings = <&mo>, <&to>;
         };
 
         // Enter/Shift on right thumb: tap=Enter, hold=Shift
