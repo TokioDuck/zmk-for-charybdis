@@ -20,7 +20,7 @@
             layers = <0>;
         };
 
-        // Combo key positions: ESC (0) + TD_CAPS (36)
+        // Combo key positions: ESC (0) + TD_CAPS (36) for Layer Indicator
         // Layer 0 Combo: Ctrl + Esc = L0
         layer0_print_combo {
             bindings = <&layer_0_print>;
@@ -249,7 +249,7 @@
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
             quick-tap-ms = <150>;
-            bindings = <&mo>, <&tog>; // Correct to take two layer parameters
+            bindings = <&mo>, <&tog>; // Hold is &mo, Tap is &tog
         };
 
         // Layer 2: tap=toggle L2, hold=Ctrl
@@ -328,7 +328,7 @@
 &kp ESC     &kp N1  &kp N2  &kp N3      &kp N4      &kp N5          &kp N6      &kp N7          &kp N8      &kp N9  &kp N0              &kp DEL
 &kp TAB     &kp Q   &kp W   &kp E       &kp R       &kp T           &kp Y       &kp U           &kp I       &kp O   &kp P               &kp BSLH
 &kp BSPC    &kp A   &kp S   &kp D       &kp F       &kp G           &td_h_back  &td_j_lclick    &kp K       &kp L   &kp SEMI            &kp APOS
-&td_caps    &kp Z   &kp X   &kp C       &kp V       &kp B           &kp N       &kp M           &kp COMMA   &kp DOT &slash_alt LALT SLASH
+&td_caps    &kp Z   &kp X   &kp C       &kp V       &kp B           &kp N       &kp M           &kp COMMA   &kp DOT &slash_alt LALT SLASH // FIXED Keycode
                         &kp LSHFT   &kp SPACE   &kp LEFT            &enter_shift LSHFT ENTER    &kp RIGHT
                                     &lt2_ctrl LCTRL 2             &lt1_custom 1 1              &lt3_mo2 2 3
             >;
@@ -344,7 +344,7 @@
 &tilde_degree   &kp N1      &kp N2      &kp N3      &kp N4      &kp N5          &kp PLUS    &kp UNDER       &kp MINUS       &td_em_dash     &kp EQUAL    &kp PG_DN
 &kp PIPE        &kp N6      &kp N7      &kp N8      &kp N9      &kp N0          &kp BSLH    &kp LBKT        &kp RBKT        &td_en_dash     &kp LEFT     &kp RIGHT
                             &kp LSHFT   &kp SPACE   &kp LEFT    &enter_shift LSHFT ENTER    &kp BSPC
-                                        &lt2_ctrl LCTRL 2 &to 0                   &lt3_mo2 2 3 // FIX: Changed &tog 0 to &to 0
+                                        &lt2_ctrl LCTRL 2 &to 0                   &lt3_mo2 2 3 // FIX: &to 0 ensures exit to base
             >;
         };
 
@@ -356,7 +356,7 @@
 &none       &kp C_PREV  &kp LEFT     &kp C_VOL_UP    &kp RIGHT       &kp C_NEXT   &kp PSCRN     &kp LEFT      &kp DOWN      &kp RIGHT     &none       &none
 &none       &cc_toggle  &kp C_BRI_DN &kp C_VOL_DN    &kp C_BRI_UP    &none        &none         &kp HOME      &none         &kp END       &none       &none
                                         &kp LEFT            &kp SPACE           &kp RIGHT    &none         &none
-                                                    &to 0       &lt1_custom 1 1               &lt3_custom 3 3 // FIX: Changed &trans to &to 0
+                                                    &to 0       &lt1_custom 1 1               &lt3_custom 3 3 // FIX: &to 0 ensures exit to base
             >;
         };
 
@@ -365,10 +365,10 @@
             bindings = <
 &none &none &none        &none        &none        &none        &none      &none           &none      &none &none &none
 &none &none &kp LC(C)    &kp C_MUTE   &kp LC(V)    &kp K_BACK   &none      &none           &none      &none &none &none
-&none &none &none        &none        &lt4_custom 4 4 &none        &none      &none           &mkp MCLK  &none &none &none 
-&none &none &none        &none        &none        &none        &none      &mkp LCLK       &mkp RCLK  &none &none &none 
+&none &none &none        &none        &lt4_custom 4 4 &none        &none      &none           &mkp MCLK  &none &none &none
+&none &none &none        &none        &none        &none        &none      &mkp LCLK       &mkp RCLK  &none &none &none
                              &lt4_custom 4 4 &mkp LCLK  &mkp RCLK     &mkp RCLK  &mkp LCLK
-                                         &trans      &trans                   &to 0 // FIX: Changed &tog 0 to &to 0
+                                         &trans      &trans                   &to 0 // FIX: &to 0 ensures exit to base
             >;
 
             trackball-bindings = <&tsl>;
@@ -378,11 +378,11 @@
         layer_4 {
             bindings = <
 &none &none &none        &none        &none        &none        &none      &none           &none      &none      &none &none
-&none &none &kp LC(C)    &kp C_MUTE   &kp LC(V)    &kp K_BACK   &none      &none           &none      &none      &none &none 
+&none &none &kp LC(C)    &kp C_MUTE   &kp LC(V)    &kp K_BACK   &none      &none           &none      &none      &none &none
 &none &none &none        &none        &lt5_custom 5 5 &none        &none      &lt3_custom 3 3 &mkp MCLK  &none      &none &none
 &none &none &none        &none        &none        &none        &none      &mkp LCLK       &mkp RCLK  &lt5_custom 5 5 &none &none
                              &lt3_custom 3 3 &mkp LCLK  &mkp RCLK     &mkp RCLK  &mkp LCLK
-                                         &trans      &trans                   &to 0 // FIX: Changed &tog 0 to &to 0
+                                         &trans      &trans                   &to 0 // FIX: &to 0 ensures exit to base
             >;
 
             trackball-bindings = <&tmv_coarse>;
@@ -392,11 +392,11 @@
         layer_5 {
             bindings = <
 &none &none &none        &none        &none        &none        &none      &none           &none      &none      &none &none
-&none &none &kp LC(C)    &kp C_MUTE   &kp LC(V)    &kp K_BACK   &none      &none           &none      &none      &none &none 
+&none &none &kp LC(C)    &kp C_MUTE   &kp LC(V)    &kp LC(V)    &none      &none           &none      &none      &none &none
 &none &none &none        &none        &lt4_custom 4 4 &none        &none      &lt3_custom 3 3 &mkp MCLK  &none      &none &none
 &none &none &none        &none        &none        &none        &none      &mkp LCLK       &mkp RCLK  &lt4_custom 4 4 &none &none
                              &lt3_custom 3 3 &mkp LCLK  &mkp RCLK     &mkp RCLK  &mkp LCLK
-                                         &trans      &trans                   &to 0 // FIX: Changed &tog 0 to &to 0
+                                         &trans      &trans                   &to 0 // FIX: &to 0 ensures exit to base
             >;
 
             trackball-bindings = <&tmv_fine>;
@@ -410,7 +410,7 @@
 &none &none &none        &none        &none        &none        &kp C_PREV &kp LEFT     &kp C_VOL_UP &kp RIGHT &kp C_NEXT &none
 &none &none &none        &none        &none        &none        &cc_toggle &kp C_BRI_DN &kp C_VOL_DN &kp C_BRI_UP &none &none
                              &none        &none        &none        &kp SPACE  &none
-                                         &none        &none                    &to 0 // FIX: Changed &tog 0 to &to 0
+                                         &none        &none                    &to 0 // FIX: &to 0 ensures exit to base
             >;
         };
     };
